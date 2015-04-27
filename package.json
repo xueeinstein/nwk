@@ -1,0 +1,25 @@
+{
+  "name": "nwk",
+  "version": "0.0.0",
+  "description": "nw.js kit",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xueeinstein/nwk.git"
+  },
+  "keywords": [
+    "nw.js"
+  ],
+  "author": "xueeinstein <xueeinstein@gmail.com> (http://xueeinstein.me)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/xueeinstein/nwk/issues"
+  },
+  "homepage": "https://github.com/xueeinstein/nwk",
+  "dependencies": {
+    "npm": "^2.7.3"
+  }
+}
