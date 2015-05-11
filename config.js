@@ -2,7 +2,7 @@ var config = module.exports;
 var path = require("path");
 
 // nw.js dist url where to download nw.js & nw_headers
-config.nwDistUrl = "";
+config.nwDistUrl = "http://node-webkit.s3.amazonaws.com";
 
 config.cacheDir = getCacheDir();
 
