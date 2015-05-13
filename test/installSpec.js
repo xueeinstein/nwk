@@ -1,5 +1,6 @@
 var expect = require("chai").expect;
 var path = require("path"),
+    shjs = require("shelljs"),
     nwk = require("../lib/nwk.js"),
     install = require("../lib/install.js"),
     phonyConf = require("../lib/config/phonyConf.js");
@@ -33,10 +34,17 @@ describe("install", function () {
   });
 
   describe("#singlePkg()", function () {
+    // TODO, add new test cases:
+    // A(B, C) means that A deps on B & C
+    // 1. PUREJS(ADDONS_I)
+    // 2. PUREJS(ADDONS_II)
+    // 3. ADDONS_I(ADDONS_II)
+    // 4. ADDONS_II(ADDONS_I)
     it("install single pure js package 'colors' for nw.js-v0.12.0, under tmp dir", function(done) {
       this.timeout(150000);
       var conf = phonyConf.install("colors", "0.12.0"),
           tmp = path.resolve(__dirname, "..", "nwktmp");
+      shjs.mkdir('-p', tmp);
       process.chdir(tmp);
       console.log(__dirname);
       console.log(process.cwd());
@@ -54,6 +62,7 @@ describe("install", function () {
       this.timeout(150000);
       var conf = phonyConf.install("bignum", "0.12.0"),
           tmp = path.resolve(__dirname, "..", "nwktmp");
+      shjs.mkdir('-p', tmp);
       process.chdir(tmp);
       console.log(__dirname);
       console.log(process.cwd());
@@ -71,6 +80,7 @@ describe("install", function () {
       this.timeout(150000);
       var conf = phonyConf.install("sqlite3", "0.12.0"),
           tmp = path.resolve(__dirname, "..", "nwktmp");
+      shjs.mkdir('-p', tmp);
       process.chdir(tmp);
       console.log(__dirname);
       console.log(process.cwd());
