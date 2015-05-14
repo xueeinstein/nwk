@@ -5,7 +5,7 @@ var path = require("path"),
     install = require("../lib/install.js"),
     phonyConf = require("../lib/config/phonyConf.js");
 
-describe("install", function () {
+describe.skip("install", function () {
   describe("#checkInstallType()", function () {
     it("check pure js package, taking 'colors' as an example", function(done) {
       this.timeout(150000);
