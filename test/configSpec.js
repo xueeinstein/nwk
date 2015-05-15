@@ -11,4 +11,15 @@ describe("nwk config", function() {
       }
     });
   });
+
+  describe("#latestVer", function () {
+    it("currently should be '0.12.1' as release version", function(done) {
+      this.timeout(15000);
+      config.latestVer(function (er, latest){
+        if (er) throw er;
+        expect(latest).to.equal("0.12.1");
+        done();
+      });
+    });
+  });
 });
