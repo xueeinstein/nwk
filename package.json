@@ -28,9 +28,11 @@
     "object-assign": "^2.0.0",
     "rimraf": "^2.3.3",
     "semver": "^4.3.4",
+    "single-line-log": "^0.4.1",
     "slide": "^1.1.6",
     "tarball-extract": "0.0.3",
-    "umask": "^1.1.0"
+    "umask": "^1.1.0",
+    "wget": "0.0.1"
   },
   "devDependencies": {
     "chai": "^2.3.0",
