@@ -25,7 +25,7 @@ describe("nwapp", function () {
           "osx": "nwjs.app",
           "win": "nw.exe"
         }
-        console.log(platforms.pl);
+        console.log(platforms[pl]);
         console.log(process.cwd());
         isDownloaded = fs.existsSync(platforms[pl]);
         expect(isDownloaded).to.equal(true);
@@ -40,7 +40,7 @@ describe("nwapp", function () {
             );
         // On OS X, the execuable file is different
         platforms.darwin = "nwjs.app/Contents/MacOS/nwjs";
-        var nw = spawn(platforms[process.platform]);
+        var nw = spawn("./"+platforms[pl]);
         nw.stdout.on("data", function (data) {
           var out = data.toString("ascii");
           console.log("stdout:", out);
