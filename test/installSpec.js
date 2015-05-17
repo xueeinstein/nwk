@@ -95,4 +95,16 @@ describe.skip("install", function () {
       });
     });
   });
+
+  describe.skip("#testBuild()", function () {
+    it("detect node.js addons build error", function(done) {
+      // sqlite3 should throw binary file path error
+      install.testBuild("sqlite3". function (er) {
+        if (er) {
+          process.chdir(__dirname);
+          throw er;
+        }
+      });
+    });
+  });
 });

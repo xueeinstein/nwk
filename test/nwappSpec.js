@@ -78,8 +78,11 @@ describe("nwapp", function () {
         "../assets/templates/started/index.html",
         "../assets/templates/started/package.json"
       ];
-      nwapp.generateNWapp(templates, function (er, res) {
-        if (er) throw er;
+      nwapp.generateNWapp(templates, function (er) {
+        if (er) {
+          process.chdir(__dirname);
+          throw er;
+        }
         var curr = "", temp = "";
         curr = shjs.cat("index.html");
         temp = shjs.cat("../assets/templates/started/index.html");
@@ -87,6 +90,30 @@ describe("nwapp", function () {
         expect(curr).to.not.equal(null);
         expect(temp).to.not.equal(null);
         expect(curr).to.equal(temp);
+        done();
+      });
+    });
+  });
+
+  describe("#restoreNWapp()", function () {
+    it("should restore nw app from '.nwk' dir", function(done) {
+      this.timeout(150000);
+      var tmp = path.resolve(__dirname, "..", "nwktmp");
+      shjs.mkdir('-p', tmp);
+      process.chdir(tmp);
+      var shoulebe = shjs.cat(".nwk/index.html") || "";
+      var templates = [
+        "../assets/templates/started/index.html",
+        "../assets/templates/started/package.json"
+      ];
+      nwapp.restoreNWapp(templates, function (er) {
+        if (er) {
+          process.chdir(__dirname);
+          throw er;
+        }
+        var curr = shjs.cat("index.html") || "";
+        process.chdir(__dirname);
+        expect(curr).to.equal(shoulebe);
         done();
       });
     });
