@@ -7,7 +7,7 @@ var fs = require("fs"),
     nwapp = require("../lib/nwapp.js");
 
 describe("nwapp", function () {
-  describe("#get()", function () {
+  describe.skip("#get()", function () {
     it("download nw.js release version into cwd, taking nw.js-v0.12.0 as an example", function(done) {
       this.timeout(1500000);
       var tmp = path.resolve(__dirname, "..", "nwktmp");
@@ -64,6 +64,30 @@ describe("nwapp", function () {
           expect(isRightVersion).to.equal(true);
           done();
         }, 3000);
+      });
+    });
+  });
+
+  describe("#generateNWapp()", function () {
+    it("generate nw app from templates, taking 'started' template as an example", function(done) {
+      this.timeout(150000);
+      var tmp = path.resolve(__dirname, "..", "nwktmp");
+      shjs.mkdir('-p', tmp);
+      process.chdir(tmp);
+      var templates = [
+        "../assets/templates/started/index.html",
+        "../assets/templates/started/package.json"
+      ];
+      nwapp.generateNWapp(templates, function (er, res) {
+        if (er) throw er;
+        var curr = "", temp = "";
+        curr = shjs.cat("index.html");
+        temp = shjs.cat("../assets/templates/started/index.html");
+        process.chdir(__dirname);
+        expect(curr).to.not.equal(null);
+        expect(temp).to.not.equal(null);
+        expect(curr).to.equal(temp);
+        done();
       });
     });
   });
