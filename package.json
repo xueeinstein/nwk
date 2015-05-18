@@ -1,8 +1,11 @@
 {
   "name": "nwk",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "nw.js kit",
   "main": "lib/nwk.js",
+  "bin": {
+    "nwk": "bin/nwk-cli.js"
+  },
   "scripts": {
     "test": "mocha"
   },
@@ -21,6 +24,7 @@
   "homepage": "https://github.com/xueeinstein/nwk",
   "dependencies": {
     "async": "^0.9.0",
+    "colors": "^1.1.0",
     "decompress": "^2.3.0",
     "fs-write-stream-atomic": "^1.0.2",
     "mkdirp": "^0.5.0",
