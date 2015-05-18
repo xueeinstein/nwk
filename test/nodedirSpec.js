@@ -19,7 +19,7 @@ describe("nodedir", function () {
     it("cache unexist nw-headers should throw error", function(done) {
       this.timeout(150000);
       nodedir.cache("1.0.0", function (er) {
-        if (er) console.log(er);
+        expect(er).to.not.equal(null);
         done();
       });
     });

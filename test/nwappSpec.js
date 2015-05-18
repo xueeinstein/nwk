@@ -7,10 +7,10 @@ var fs = require("fs"),
     nwapp = require("../lib/nwapp.js");
 
 describe("nwapp", function () {
-  describe.skip("#get()", function () {
+  describe("#get()", function () {
     it("download nw.js release version into cwd, taking nw.js-v0.12.0 as an example", function(done) {
       this.timeout(1500000);
-      var tmp = path.resolve(__dirname, "..", "nwktmp");
+      var tmp = path.resolve(__dirname, "..", "..", "nwktmp");
       shjs.mkdir('-p', tmp);
       process.chdir(tmp);
       var pl = process.platform;
@@ -34,13 +34,13 @@ describe("nwapp", function () {
         // make test nw app
         shjs.cp(
             "-f",
-            "../assets/templates/test-nw-version/index.html",
-            "../assets/templates/test-nw-version/package.json",
+            path.resolve(__dirname, "../assets/templates/test-nw-version/index.html"),
+            path.resolve(__dirname, "../assets/templates/test-nw-version/package.json"),
             "."
             );
         // On OS X, the execuable file is different
         platforms.darwin = "nwjs.app/Contents/MacOS/nwjs";
-        var nw = spawn("./"+platforms[pl]);
+        var nw = spawn(platforms[pl]);
         nw.stdout.on("data", function (data) {
           var out = data.toString("ascii");
           console.log("stdout:", out);
@@ -71,12 +71,12 @@ describe("nwapp", function () {
   describe("#generateNWapp()", function () {
     it("generate nw app from templates, taking 'started' template as an example", function(done) {
       this.timeout(150000);
-      var tmp = path.resolve(__dirname, "..", "nwktmp");
+      var tmp = path.resolve(__dirname, "..", "..", "nwktmp");
       shjs.mkdir('-p', tmp);
       process.chdir(tmp);
       var templates = [
-        "../assets/templates/started/index.html",
-        "../assets/templates/started/package.json"
+        path.resolve(__dirname, "../assets/templates/started/index.html"),
+        path.resolve(__dirname, "../assets/templates/started/package.json")
       ];
       nwapp.generateNWapp(templates, function (er) {
         if (er) {
@@ -85,7 +85,7 @@ describe("nwapp", function () {
         }
         var curr = "", temp = "";
         curr = shjs.cat("index.html");
-        temp = shjs.cat("../assets/templates/started/index.html");
+        temp = shjs.cat(path.resolve(__dirname, "../assets/templates/started/index.html"));
         process.chdir(__dirname);
         expect(curr).to.not.equal(null);
         expect(temp).to.not.equal(null);
@@ -98,13 +98,13 @@ describe("nwapp", function () {
   describe("#restoreNWapp()", function () {
     it("should restore nw app from '.nwk' dir", function(done) {
       this.timeout(150000);
-      var tmp = path.resolve(__dirname, "..", "nwktmp");
+      var tmp = path.resolve(__dirname, "..", "..", "nwktmp");
       shjs.mkdir('-p', tmp);
       process.chdir(tmp);
       var shoulebe = shjs.cat(".nwk/index.html") || "";
       var templates = [
-        "../assets/templates/started/index.html",
-        "../assets/templates/started/package.json"
+        path.resolve(__dirname, "../assets/templates/started/index.html"),
+        path.resolve(__dirname, "../assets/templates/started/package.json")
       ];
       nwapp.restoreNWapp(templates, function (er) {
         if (er) {

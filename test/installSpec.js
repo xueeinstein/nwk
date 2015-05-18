@@ -5,7 +5,7 @@ var path = require("path"),
     install = require("../lib/install.js"),
     phonyConf = require("../lib/config/phonyConf.js");
 
-describe.skip("install", function () {
+describe("install", function () {
   describe("#checkInstallType()", function () {
     it("check pure js package, taking 'colors' as an example", function(done) {
       this.timeout(150000);
@@ -43,7 +43,7 @@ describe.skip("install", function () {
     it("install single pure js package 'colors' for nw.js-v0.12.0, under tmp dir", function(done) {
       this.timeout(150000);
       var conf = phonyConf.install("colors", "0.12.0"),
-          tmp = path.resolve(__dirname, "..", "nwktmp");
+          tmp = path.resolve(__dirname, "..", "..", "nwktmp");
       shjs.mkdir('-p', tmp);
       process.chdir(tmp);
       console.log(__dirname);
@@ -61,7 +61,7 @@ describe.skip("install", function () {
     it("install ADDONS_I package 'bignum' for nw.js-v0.12.0, under tmp dir", function(done) {
       this.timeout(150000);
       var conf = phonyConf.install("bignum", "0.12.0"),
-          tmp = path.resolve(__dirname, "..", "nwktmp");
+          tmp = path.resolve(__dirname, "..", "..", "nwktmp");
       shjs.mkdir('-p', tmp);
       process.chdir(tmp);
       console.log(__dirname);
@@ -79,7 +79,7 @@ describe.skip("install", function () {
     it("install ADDONS_II package 'sqlite3' for nw.js-v0.12.0, under tmp dir", function(done) {
       this.timeout(150000);
       var conf = phonyConf.install("sqlite3", "0.12.0"),
-          tmp = path.resolve(__dirname, "..", "nwktmp");
+          tmp = path.resolve(__dirname, "..", "..", "nwktmp");
       shjs.mkdir('-p', tmp);
       process.chdir(tmp);
       console.log(__dirname);
@@ -99,7 +99,7 @@ describe.skip("install", function () {
   describe.skip("#testBuild()", function () {
     it("detect node.js addons build error", function(done) {
       // sqlite3 should throw binary file path error
-      install.testBuild("sqlite3". function (er) {
+      install.testBuild("sqlite3",  function (er) {
         if (er) {
           process.chdir(__dirname);
           throw er;
