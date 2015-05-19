@@ -40,7 +40,7 @@ describe("nwapp", function () {
             );
         // On OS X, the execuable file is different
         platforms.darwin = "nwjs.app/Contents/MacOS/nwjs";
-        var nw = spawn(platforms[pl]);
+        var nw = spawn("./"+platforms[pl]);
         nw.stdout.on("data", function (data) {
           var out = data.toString("ascii");
           console.log("stdout:", out);

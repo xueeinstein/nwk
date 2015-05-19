@@ -29,6 +29,7 @@ function getLatestVer() {
   var options = {
     host: "raw.githubusercontent.com",
     path: "/nwjs/nw.js/master/src/nw_version.h",
+    proxy: process.env["HTTP_PROXY"] || process.env["http_proxy"] || "",
     port: 443,
     method: "GET"
   };

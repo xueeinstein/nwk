@@ -1,6 +1,8 @@
 # nwk
 nw.js kit
 
+[![Build Status](https://travis-ci.org/xueeinstein/nwk.svg)](https://travis-ci.org/xueeinstein/nwk)
+
 ## install
 ```
 npm install nwk -g
