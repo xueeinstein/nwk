@@ -3,7 +3,8 @@ var path = require("path"),
     shjs = require("shelljs"),
     nwk = require("../lib/nwk.js"),
     install = require("../lib/install.js"),
-    phonyConf = require("../lib/config/phonyConf.js");
+    phonyConf = require("../lib/config/phonyConf.js"),
+    npmErrorHandler = require("../lib/utils/error-handler.js");
 
 describe("install", function () {
   describe("#checkInstallType()", function () {
@@ -105,6 +106,13 @@ describe("install", function () {
           throw er;
         }
       });
+    });
+  });
+
+  describe("make phony npmErrorHandler cb", function () {
+    it("call npm cb", function(done) {
+      npmErrorHandler(null, "ok");
+      done();
     });
   });
 });
