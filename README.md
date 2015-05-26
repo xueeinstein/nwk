@@ -18,3 +18,7 @@ npm install nwk -g
 * __test addons build__: `nwk test [<module_name>]`, test node addons special build for nw.js. And auto solve binary path error which often happens when install node addons that use `node-pre-gyp` to build.
 
 __Note__: use `<arg>` to represent argument, `[...]` means that it's optional.
+
+## known issues
+
+The nw.js official download page, `http://dl.nwjs.io` cannot be accessed in China.
